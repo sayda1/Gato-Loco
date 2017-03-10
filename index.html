@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Inicio</title>
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
 </head>
 <body>
    <!---------HEADER--DE--MENU------>
@@ -31,13 +32,46 @@
         </nav>
     </header>
     <!---------SECTION--BIENVENIDO--GATO-LOCO------>
-    <section>
-        <div class="container">
-            <div class="text-center gato-loco">
+    <section id="bienvenido">
+        <div class="contentnido text-center">
+            <div class="container">
                 <h1>Bienvenido a Gato Loco!</h1>
-                <button>Iniciar Juego</button>
-            </div> 
+                <button id="boton1">Iniciar Juego</button>
+            </div>
         </div>
     </section>
+    <!---------SECTION--DE-INGRESE--SU----NOMBRE----->
+    <section id="nombres">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-5 col-xs-7 control-label">Email</label>
+            <div class="col-sm-7 col-xs-5">
+              <input type="text" class="form-control" id="nombre" placeholder="Rodrigo">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 col-xs-7 control-label">Password</label>
+            <div class="col-sm-7 col-xs-5">
+              <input type="text" class="form-control" id="nombre2" placeholder="Ismael">
+            </div>
+          </div>
+          </form>
+          <button id="boton2">Continuar</button>
+    </section>
+    <section id="juego">
+    <div class="container">
+        <div class="col-xs-8">
+           <h1>jiiiais</h1>
+            <div></div>
+            <div></div>
+            <div></div>
+                
+        </div>
+</section>
 </body>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </html>
