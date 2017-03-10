@@ -13,29 +13,36 @@
     <header>
         <div class="container">
             <div class="row">
-                <ul class="list-inline pull-right">
+                <ul class="list-inline pull-right lista">
                     <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Historial</a></li>
+                    <li class="li"><a href="#">Historial</a></li>
                 </ul>
             </div>
         </div>
     </header>
     <!----------SECTION------NOMBRE-DE--JUGADORES-->
-    <section>
+    <section class="ingrese_nombre">
         <div class="container">
             <div class="row">
-                <div class="jugadore1">
-                    <label for="">Ingrese el nombre del jugador 1</label>
-                    <input type="" placeholder="Ismael">
+                <div class="form-group row">
+                  <label for="" class="col-sm-8 col-form-label col-xs-8">Ingrese el nombre del 1 jugador</label>
+                  <div class="col-sm-4 col-xs-4">
+                    <input type="text" class="form-control" placeholder="Ismael">
+                  </div>
                 </div>
-                <div class="jugador2">
-                    <label for="">Ingrese el nombre del jugador 2</label>
-                    <input type="text" placeholder="Rodrigo"> 
-                </div>
-                <br>
-                <div class="text-center">
-                   <button>Comensar</button> 
-                </div>
+              <div class="form-group row">
+                  <label for="nombre" class="col-sm-8 col-form-label col-xs-8">Ingrese el nombre del 2 jugador</label>
+                  <div class="col-sm-4 col-xs-4">
+                    <input type="text" class="form-control" placeholder="Rodrigo">
+                  </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                <button>Comensar</button> 
             </div>
         </div>
     </section>

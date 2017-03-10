@@ -1,3 +1,4 @@
+/*---------CSS----GENERAL----PARA----TODO*/
 *{
     outline: 1px solid pink;
     font-family: cursive;
@@ -6,25 +7,26 @@ body{
     margin: 0;
     padding: 0;
 }
-/*---------------------INDEX---HTML--PRIMERA---PAGINA-------------*/
-.index-header{
-    box-sizing: border-box;
-    padding: 10px;
+/*---------------------INDEX--
+.lista{
+    margin:30px 0px 0px 0px; 
 }
-.index-header ul li a {
-    font-size: 20px;
-    text-decoration: underline;
+.lista li a {
+    font-size:20px;
+    text-decoration:underline;
 }
-.index-header ul .li {
-    border-left: 2px solid black; 
+.li {
+    border-left:2px solid black; 
 }
-.index-header .gato-loco{
-   padding-top:11em;
+-HTML--PRIMERA---PAGINA-------------*/
+
+/*---HTML------DE---NOMBRE---DE--JUGADORES------*/
+.ingrese_nombre{
 }
-.index-header button{
-    margin-top:11em;
-    background: none;
-    border:4px solid black;
-    font-weight: 600;
-    font-size: 20px;
+.ingrese_nombre label{
+    font-weight:bold;
+}
+.ingrese_nombre input{
+    font-size:20px;
+    border: 3px solid black;
 }
