@@ -13,6 +13,13 @@ $(document).ready(function(){
             $('#nombres').hide();
             $('#juego').show(); 
         }
-    }); 
-   
+    });
+    $('#boton3').click(function (){
+        $('#juego').hide(1000); 
+        $('#historial').show(1000);
+    });
+    $('.comentar').click(function(){
+        $('#historial').hide(); 
+       $('#comentarios').show();
+    });
 })
