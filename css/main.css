@@ -15,6 +15,6 @@ section{
     left:0;
     margin:0 auto;
 }
-#nombres , #juego{
+#nombres , #juego ,#historial , #comentarios{
     display: none;
 }
