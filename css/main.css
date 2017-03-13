@@ -1,5 +1,5 @@
 /*---------CSS----GENERAL----PARA----TODO*/
-*{
+{
     outline: 1px solid pink;
     font-family: cursive;
 }
@@ -7,7 +7,6 @@ body{
     margin:0;
     padding:0;
 }
-/*------------HTML----PRIMERA-PANTALLA--SALUDO---*/
 section{
     position: absolute;
     width:100%;
@@ -18,3 +17,39 @@ section{
 #nombres , #juego ,#historial , #comentarios{
     display: none;
 }
+/*------------HTML----PRIMERA-PANTALLA--SALUDO---*/
+.header-menu .navbar{
+    background:white;
+}
+/*-------SECTION-INGRESE-SU-NOMBRE--------*/
+#nombres{
+    font-size:18px;
+    text-align:center;
+}
+/*-------JUEGO--------TRES----EN----RAYA-------------*/
+#juego{
+    position: absolute;
+    top:20%; 
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+#juego h1{
+    text-decoration:underline;
+}
+#juego p{
+    margin-top:20%;
+    font-size:20px 
+}
+.table{
+    border:3px solid black;
+}
+.table td{
+    border:3px solid black;
+    width:auto;
+    height:100px;
+}
+
+
+
+
