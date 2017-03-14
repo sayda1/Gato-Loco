@@ -1,8 +1,8 @@
 $(document).ready(init);
 function init(){
     rotacionSeciones();
+    //validarNombres();
 }
-
 
 //ROTACIONES DE LAS SECIONES
 function rotacionSeciones(){
@@ -20,6 +20,7 @@ function rotacionSeciones(){
             $('#nombres').hide(1000);
             $('#juego').show(1000); 
         }
+        validarNombres();
     });
     $('#boton3').click(function (){
         $('#juego').hide(1000); 
@@ -30,3 +31,15 @@ function rotacionSeciones(){
         $('#comentarios').show(1000);        
     });
 }
+
+//VALIDANDO EL ENVIO DE NOMBRES
+function validarNombres(){
+    var nombre1=$('#nombre').val();
+    var nombre2=$('#nombre2').val();
+    
+    var saliNombre1=$('#saliNombre1');
+    var saliNombre2=$('#saliNombre2');
+    saliNombre1.text(nombre1);
+    saliNombre2.text(nombre2);
+}
+
