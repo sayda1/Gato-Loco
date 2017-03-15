@@ -1,4 +1,5 @@
 $(document).ready(init);
+var currentGameID;
 function init(){
     //ROTACIONES DE LAS SECIONES
     $('#navegaHistorial').click(naveHistorial);
@@ -6,23 +7,22 @@ function init(){
     $('#boton2').click(naveJuego);
     $('#boton3').click(naveHistorial2);
     
-    //ver comentarios funcion
+    //ver comentarios y tambien para navegar
     $('#lista-juegos').on('click','button', naveComentario);
+    $('#comentar').click(clickComentar);
     
     juegoTablero();
-    solicitarPeticiones();
-    solicitarComentarios();
 }
 //ROTACIONES DE LAS SECIONES
 function naveHistorial(){
     $('#bienvenido').hide(1000); 
     $('#historial').show(1000);
-    solicitarPeticiones(); 
+    solicitarHistorial(); 
 }
 function naveHistorial2(){
     $('#juego').hide(1000); 
     $('#historial').show(1000);
-    solicitarPeticiones();
+    solicitarHistorial();
 }
 function naveNombres(){
     $('#bienvenido').hide(1000);
@@ -39,13 +39,14 @@ function naveJuego(){
     }
     validarNombres();
 }
-var gameID;//currentGameID
+//navegar a  comentario
 function naveComentario(){
     var idGame=$(this).parent().data('idgame');
-    console.log(_idGame);
-    solicitarComentarios(_idGame);
     $('#historial').hide(1000);
     $('#comentarios').show(1000);
+   //console.log(idGame);
+    solicitarComentarios(idGame);
+    currentGameID=idGame;
 }
 //VALIDANDO EL ENVIO DE NOMBRES
 function validarNombres(){
@@ -58,22 +59,20 @@ function validarNombres(){
     saliNombre2.text(nombre2);
 }
 //JUEGO DEL TABLERO
-console.log(juegoTablero);
 function juegoTablero(){
-    var juego = new Array(9);
-    var tabla=$('td');
+    var juego=new Array(9);
+    var n;
     for(var i=0;i>9; i++){
-        tabla[i].html("X");
+        $('td').click(tresEnraya);
+        n++;
     }
-    /*.each(function(){
-       $("td")[i].click(function(){
-           $('td').html("X"); 
-       });
-    });*/
 };
-
-//AJAX PETICIONES----- HISTORIAL HTML
-function solicitarPeticiones(){
+function tresEnraya(){
+    alert('funciona..!');
+    
+}
+///AJAX PETICIONES----- HISTORIAL HTML-----
+function solicitarHistorial(){
     $.ajax({url:'http://test-ta.herokuapp.com/games',
     }).done(function (_data){
         console.log(_data);
@@ -90,6 +89,34 @@ function dubujarHistorial(_datos){
     }
     $('#lista-juegos').html(carga);
 }
+//funcion de peticion general
+function getSingleGame(_idGame)
+{
+	$.ajax({
+		url: 'http://test-ta.herokuapp.com/games/'+_idGame,
+		type:'GET'
+	}).success(function(_data){
+		console.log(_data);
+	});
+}
+//ENVIAR COMENTARIOS
+
+function clickComentar(){
+    enviarComentario(currentGameID, $('#name').val(), $('#comentario').val());
+    //console.log('hola..!');
+}
+
+function enviarComentario(_idGame, _name , _content){
+    $.ajax({
+        url:'http://test-ta.herokuapp.com/games/'+_idGame+'/comments',
+        type:'POST',
+        data:{comment:{name:_name, content:_content, game_id:_idGame}}
+    }).done(function (_data){
+        console.log(_data);
+        solicitarComentarios(_idGame);
+    });
+}
+
 //COMENTARIOS HTML
 function solicitarComentarios(_idGame)
 {
@@ -102,7 +129,7 @@ function solicitarComentarios(_idGame)
 	});
 }
 
-//HTML COMENTARIOS LISTA
+//HTML COMENTARIOS LISTAone
 function dibujarComentarios(_data){
     var comentaHtml='';
     for(var i in _data){
@@ -111,13 +138,3 @@ function dibujarComentarios(_data){
     }
     $('#lista-comentarios').html(comentaHtml);
 }
-
-/*function enviarComentario (_idgame , _name , _content){
-    $.ajax({
-        url:'http://test-ta.herokuapp.com/games/'+_idgame+'/comments',
-        type:'POST',
-        data:{coment:{name:_name, content:_content, game_id:_idgame}}
-    }).done(function (_data){
-        console.log(_data);
-    });
-}*/
