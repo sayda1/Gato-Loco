@@ -2,20 +2,20 @@ $(document).ready(init);
 var currentGameID;
 function init(){
     //ROTACIONES DE LAS SECIONES
-   // $('#navegaHistorial').click(naveHistorial);
+   $('#navegaHistorial').click(naveHistorial);
     $('#boton1').click(naveNombres);        
     $('#boton2').click(naveJuego);
-    //$('#boton3').click(naveHistorial2);
+   $('#boton3').click(naveHistorial2);
     $('#reinciar').click(reiniciarJuego);
     
-    //ver comentarios y tambien para navegar
-   // $('#lista-juegos').on('click','button', naveComentario);
-   // $('#comentar').click(clickComentar);
+   //ver comentarios y tambien para navegar
+   $('#lista-juegos').on('click','button', naveComentario);
+   $('#comentar').click(clickComentar);
     
     //juegoTablero();
 }
 //--------------------------ROTACIONES DE LAS SECIONES
-/*function naveHistorial(){
+function naveHistorial(){
     $('#bienvenido').hide(1000); 
     $('#historial').show(1000);
     solicitarHistorial(); 
@@ -24,7 +24,8 @@ function naveHistorial2(){
     $('#juego').hide(1000); 
     $('#historial').show(1000);
     solicitarHistorial();
-}*/
+    envioDeJuego($(".ganador").text(), $(".perdedor").text(), $('.cont1').text());
+}
 function naveNombres(){
     $('#bienvenido').hide(1000);
     $('#nombres').show(1000); 
@@ -38,10 +39,10 @@ function naveJuego(){
         $('#nombres').hide(1000);
         $('#juego').show(1000); 
     }
-    //validarNombres();
+    validarNombres();
 }
 //navegar a  comentario
-/*function naveComentario(){
+function naveComentario(){
     var idGame=$(this).parent().data('idgame');
     $('#historial').hide(1000);
     $('#comentarios').show(1000);
@@ -116,70 +117,73 @@ function dibujarComentarios(_data){
         comentaHtml+=html;
     }
     $('#lista-comentarios').html(comentaHtml);
-}*/
+}
+//ENVIAR JUEGO
+function envioDeJuego(_ganador, _perdedor, _movimientos){
+	$.ajax({
+		url:'https://test-ta.herokuapp.com/games',
+		type:'POST',
+		data:{game:{winner_player:_ganador, loser_player:_perdedor, number_of_turns_to_win: _movimientos}}
+        
+    }).done(function(_data){
+		console.log(_data);
+        //dibujarJuego(_data);
+	});
+}
 
 //-------------------------JUEGO DEL TABLERO
 //globales
-/*function validarNombres(){
-    var nombre1=$('#nombre').val();
-    var nombre2=$('#nombre2').val();
+function validarNombres(){
+    var nombre=$('#nombre');
+    var nombre2=$('#nombre2');
     
-    saliNombre1.text(nombre1);
-    saliNombre2.text(nombre2);
-}*/
+    $('#saliNombre1').text(nombre.val());
+    $('#saliNombre2').text(nombre2.val());
+    //salinombre1.html(nombre.val());
+    //salinombre2.html(nombre2);
+    $("#juga").html( "Empieza " + nombreJugador2);
+}
 var nombreJugador1=$("#nombre").val(); 
 var nombreJugador2=$("#nombre2").val();
 var turno = 1;
-var cont1 = 0; 
-var cont2 = 0;
-var n = 0;
+var movimiento1 = 0; 
+var movimiento2 = 0;
 var posicion;
 var gana=false;
-//-------------------Que jugador comienza 
-$("#juga").html("Empieza " + nombreJugador2);
-//-------Obtener los elementos de las celdas de la tabla
-    var tablero = new Array(9);
-   // for (var i = 0;i < 9;i++){ 
-        $(".celdas").click(dibujar);
-        //n++; 
-    //}
+
+var tablero = new Array(9);
+$(".celdas").click(dibujarJuego);
 //----------------------- Función para los mensajes y movimientos
-function dibujar(evento){
-    
+function dibujarJuego(evento){
+    //$("#juga").html( "Empieza" + nombreJugador2);
     posicion=evento.target.id-1; 
-    console.log(posicion);
+    //console.log(posicion);
     if(turno == 1){ 
         if(tablero[posicion] == "X" || tablero[posicion] == "O") { 
         }else{ 
-            this.innerHTML= "X"; 
-            $("#juga").html("<span>Turno de: " + nombreJugador1 + "</span>"); 
+            $(this).html("X"); 
+            $("#juga").html("<span>Turno de: "+nombreJugador1 + "</span>"); 
             tablero[posicion]="X"; 
-            turno = 2;
-            cont1 ++;
+            turno=2;
+            movimiento1++;
         } 
-    }else if(turno == 2){ 
+    }else if(turno==2){ 
         if(tablero[posicion] == "X" || tablero[posicion] == "O"){
         }else{ 
-            this.innerHTML = "O"; 
-            $("#juga").html("<span>Turno de: " + nombreJugador2 + "</span>");
+            $(this).html("O") ;
+            $("#juga").html("<span>Turno de: "+nombreJugador2+"</span>");
             tablero[posicion]="O"; 
             turno = 1; 
-            cont2++; 
+            movimiento2++; 
         } 
     } 
-    //llamar a funcion  ganador o enviar mensaje de empate
-    if(cont1>= 3 && cont1<=9){ 
-        ganador(); 
+    if(movimiento1>= 3 && movimiento1<=9){ 
+        defineGanador(); 
     }
-    /*if(cont1 >= 9&& gana == false){ 
-        $("#juga").html("Empate.!!");
-        cont1++;
-        cont2++;
-        turno=3; 
-    }*/
-} 
+}
+
 //----------------- Función para los mensajes y movimientos
-function ganador(){ 
+function defineGanador(){ 
     if ((tablero[0]=="X" && tablero[1]=="X" && tablero[2]=="X") || 
      (tablero[3]=="X" && tablero[4]=="X" && tablero[5]=="X") || 
      (tablero[6]=="X" && tablero[7]=="X" && tablero[8]=="X") || 
@@ -187,11 +191,14 @@ function ganador(){
      (tablero[1]=="X" && tablero[4]=="X" && tablero[7]=="X") || 
      (tablero[2]=="X" && tablero[5]=="X" && tablero[8]=="X") || 
      (tablero[0]=="X" && tablero[4]=="X" && tablero[8]=="X") || 
-     (tablero[2]=="X" && tablero[4]=="X" && tablero[6]=="X")) { 
-        $("#juga").html("<span class='super-ganador'>" + nombreJugador2 + "</span>");
-        $(".one").html("<span>" + nombreJugador2+ "</span>");
-        $(".two").html("<span>" + nombreJugador1+ "</span>");
-        $(".cont1").html("<span>" + cont1 + "</span>");
+     (tablero[2]=="X" && tablero[4]=="X" && tablero[6]=="X")) {
+        
+        $("#juga").html("Gano<span'>" + nombreJugador2 + "</span>");
+        
+        
+        $(".ganador").html("<span>" + nombreJugador2+ " le gano a </span>");
+        $(".perdedor").html("<span>" + nombreJugador1+ " en </span>");
+        $(".cont1").html("<span>" + movimiento1 + "</span>");
         turno = 3; 
         gana = true; 
     }else if((tablero[0]=="O" && tablero[1]=="O" && tablero[2]=="O") || 
@@ -203,10 +210,11 @@ function ganador(){
     (tablero[0]=="O" && tablero[4]=="O" && tablero[8]=="O") || 
     (tablero[2]=="O" && tablero[4]=="O" && tablero[6]=="O")){
         
-        $("#juga").html("Ganó <span class='super-ganador'>" + nombreJugador1 + "</span>");
-        $(".one").html("<span>" +nombreJugador1 + "</span>");
-        $(".two").html("<span>" + nombreJugador2+ "</span>");
-        $(".cont1").html("<span>" + cont2 + "</span>");
+        $("#juga").html("Ganó <span>" + nombreJugador1 + "</span>");
+        
+        $(".ganador").html("<span>"+nombreJugador1 +" le gano a </span>");
+        $(".perdedor").html("<span>" + nombreJugador2+ " en </span>");
+        $(".cont1").html("<span>" + movimiento2 + "</span>");
         turno=3; 
         gana=true;
     }
