@@ -64,7 +64,7 @@ function dubujarHistorial(_datos){
     var carga='';
     for(var i in _datos){
       //console.log(_datos[i].winner_player);
-      var html ='<li data-idgame="'+_datos[i].id+'" class="list-group-item">'+_datos[i].winner_player+' le gano a '+_datos[i].loser_player+' en '+_datos[i].number_of_turns_to_win+' movimientos <br><button class="btn">ver</button></li>'
+      var html ='<li data-idgame="'+_datos[i].id+'" class="list-group-item">'+_datos[i].winner_player+' le gano a '+_datos[i].loser_player+' en '+_datos[i].number_of_turns_to_win+' movimientos <br><button class="btn">Comentar</button></li>'
         carga+=html;
     }
     $('#lista-juegos').html(carga);
