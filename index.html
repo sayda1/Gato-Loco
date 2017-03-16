@@ -59,7 +59,7 @@
                     </div>
                   </div>
                 </form>
-                <button id="boton2">Continuar</button>
+                <button id="boton2">Comenzar</button>
             </div>
             <br>
             <p id="salida"></p>
@@ -68,34 +68,34 @@
     <!-------JUEGO--------TRES----EN----RAYA------------->
     <section id="juego">
         <div class="container">
-           <h1>Turno de Rodrigo</h1>
+           <h1 id="juga"></h1>
            <br>
            <div class="col-xs-7">
                <table class="table">
-                    <tr class="tabla"> 
-                        <td class="tabla"></td>
-                        <td class="tabla"></td>
-                        <td class="tabla"></td>
+                    <tr> 
+                        <td id="1" class="celdas"></td>
+                        <td id="2"class="celdas"></td>
+                        <td id="3"class="celdas"></td>
                     </tr>
-                    <tr class="tabla"> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr> 
+                        <td id="4"class="celdas"></td>
+                        <td id="5"class="celdas"></td>
+                        <td id="6"class="celdas"></td>
                     </tr>
-                    <tr class="tabla"> 
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr> 
+                        <td id="7"class="celdas"></td>
+                        <td id="8"class="celdas"></td>
+                        <td id="9"class="celdas"></td>
                     </tr>
                 </table>
            </div>
-           <div class="col-xs-5">
-               <p>Movimientos <span id="saliNombre1">Ismael</span>  <span style="margin-left:30px">0</span></p> 
-               <p>Movimientos <span id="saliNombre2">Rodrigo</span> <span style="margin-left:30px">0</span></p> 
+           <div class="col-xs-5">                
+               <p>Movimientos<small class="one"></small>: <span class="cont1">0</span><small class="two"></small></p>
+               <button id="reinciar">Reiniciar</button>
            </div>
         </div>
         <br>
-        <h2>Gano Ismael!</h2>
+        <h2 id="gano"></h2>
         <button id="boton3">Mandar Historial</button>
     </section>
     <!------HTML----HISTORIAL------->
