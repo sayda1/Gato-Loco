@@ -60,8 +60,6 @@ function naveComentario(){
    //console.log(idGame);
     solicitarComentarios(idGame);
     currentGameID=idGame;
-    $("#ganoJugador").html('Gano'+nombreJugador2);
-    $("#ganoJugador").html('Gano'+nombreJugador1);
 }
 
 ///-----------------------AJAX PETICIONES----- HISTORIAL HTML
@@ -150,6 +148,7 @@ function envioDeJuego(_ganador, _perdedor, _movimientos){
         
     }).done(function(_data){
 		console.log(_data);
+        //dibujarJuego(_data);
 	});
 }
 
@@ -213,7 +212,7 @@ function defineGanador(){
      (tablero[0]=="X" && tablero[4]=="X" && tablero[8]=="X") || 
      (tablero[2]=="X" && tablero[4]=="X" && tablero[6]=="X")) {
         
-        $("#juga").html("Gano<span'>" + nombreJugador2 + "</span>");
+        $("#juga").html("Gano <span'>" + nombreJugador2 + "</span>");
         
         $(".ganador").html("<span>" + nombreJugador2+ " le gano a </span>");
         $(".perdedor").html("<span>" + nombreJugador1+ " en </span>");
