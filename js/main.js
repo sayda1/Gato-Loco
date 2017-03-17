@@ -6,7 +6,7 @@ function init(){
     $('#boton1').click(naveNombres);        
     $('#boton2').click(naveJuego);
    $('#boton3').click(naveHistorial2);
-    $('#reinciar').click(reiniciarJuego);
+    $('#reiniciar').click(reiniciarJuego);
     
    //ver comentarios y tambien para navegar
    $('#lista-juegos').on('click','button', naveComentario);

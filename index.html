@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
     <title>Juego</title>
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/quieres.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     
 </head>
@@ -33,8 +35,9 @@
     </header>
     <!---------SECTION--BIENVENIDO--GATO-LOCO------>
     <section id="bienvenido">
-        <div class="contentnido text-center">
-            <div class="container">
+        <center><div class="redondo"></div></center>
+        <div class="contentnido">
+            <div class="text-center">
                 <h1>Bienvenido a Gato Loco!</h1>
                 <button id="boton1">Iniciar Juego</button>
             </div>
@@ -95,7 +98,7 @@
               <p id="saliNombre1"></p>
               <p id="saliNombre2"></p>
               <br>
-               <button id="reinciar">Reiniciar</button>
+               <button id="reiniciar">Reiniciar</button>
            </div>
            </div>
             <p style="margin:0"><small class="ganador"></small><small class="perdedor"></small><span class="cont1">0</span> movimientos</p>
@@ -141,8 +144,7 @@
                             <textarea rows="3" class="form-control" id="comentario"></textarea>
                         </div>
                     </div>
-                    
-                    <input type="submit" class="btn btn-primary" value="Enviar" id="comentar">
+                    <button type="submit" id="comentar">Enviar</button>
                 </form>
             </div>
         </div>

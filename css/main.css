@@ -1,37 +1,50 @@
-/*---------CSS----GENERAL----PARA----TODO*/
 *{
-    outline: 1px solid pink;
-    font-family: cursive;
+    font-family: 'Griffy', cursive;
+    
 }
 body{
-    background-image: url(../img/gato.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
     margin:0;
-    padding:0;    
+    padding:0; 
+    background-color: #030204 !important ;
 }
+
 section{
     position: absolute;
     width:100%;
-    top:40%;
+    top:20%;
     left:0;
     margin:0 auto;
-    color: white;
+    color: #fff;
+}
+.redondo{
+    border-radius: 200px;
+    background-image: url(../img/cat1.gif);
+    background-size: cover;
+    background-position: top;
+    width: 40%;
+    height: 250px;
 }
 #nombres , #juego ,#historial , #comentarios{
     display: none;
 }
+#bienvenido h1{
+    margin-top: 5%;
+    font-size: 56px;
+    color: #29e9fd;
+}
 /*------------HTML----PRIMERA-PANTALLA--SALUDO---*/
+
 .header-menu .navbar{
-    background:#b23ddd;
+    background:white;
 }
 .header-menu .navbar ul li a{
-    color:white;
+    color:#000;
+    font-size: 20px;
 }
 /*-------SECTION-INGRESE-SU-NOMBRE--------*/
-#boton1 , #boton2 ,#boton3 , #reiniciar {
-    background:blue;
-    font-size: 20px;
+#boton1 , #boton2 ,#boton3 , #reiniciar, #comentar {
+    background:#ff001e;
+    font-size: 30px;
     border-radius:7px;
     margin-top: 50px;
     
@@ -54,10 +67,10 @@ section{
     text-decoration:underline;
 }
 .table{
-    border:3px solid black;
+    border:3px solid #29e9fd;
 }
 .table td{
-    border:3px solid black;
+    border:3px solid #29e9fd;
     width:auto;
     height:100px;
 }
@@ -71,13 +84,14 @@ section{
     text-decoration:underline;
 }
 #historial ul li , #comentarios ul li {
-    border:3px solid black;
+    border:3px solid #29e9fd;
     font-size:15px;
     list-style:none;
     margin:10px0px;
     padding:10px;
     font-weight:bold;
     margin: 10px 0px;
+    color: #333;
 }
 /*------HTML----COMENTARIOS----------*/
 #comentarios{
@@ -89,7 +103,3 @@ section{
     color: black;
     font-weight: bold;
 }
-
-
-
-
