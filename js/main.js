@@ -7,6 +7,7 @@ function init(){
     $('#boton2').click(naveJuego);
    $('#boton3').click(naveHistorial2);
     $('#reiniciar').click(reiniciarJuego);
+    $('#inicio').click(inicio);
     
    //ver comentarios y tambien para navegar
    $('#lista-juegos').on('click','button', naveComentario);
@@ -15,8 +16,16 @@ function init(){
     //juegoTablero();
 }
 //--------------------------ROTACIONES DE LAS SECIONES
+function inicio(){
+    $('#nombres').hide(1000);
+    $('#juego').hide(1000); 
+    $('#historial').hide(1000);
+    $('#bienvenido').show(1000);
+}
 function naveHistorial(){
-    $('#bienvenido').hide(1000); 
+    $('#bienvenido').hide(1000);
+    $('#nombres').hide(1000);
+    $('#juego').hide(1000); 
     $('#historial').show(1000);
     solicitarHistorial(); 
 }
@@ -34,7 +43,7 @@ function naveJuego(){
     nombreJugador1=$('#nombre').val();
     nombreJugador2=$('#nombre2').val();
     if(nombreJugador1==""||nombreJugador2==""){
-        $('#salida').text('Por fabor ingresen sus nombres .').css('color', 'red');
+        $('#salida').text('Por favor ingresen sus nombres .').css('color', 'red');
     }else{
         $('#nombres').hide(1000);
         $('#juego').show(1000); 
@@ -53,7 +62,7 @@ function naveComentario(){
 
 ///-----------------------AJAX PETICIONES----- HISTORIAL HTML
 function solicitarHistorial(){
-    $.ajax({url:'http://test-ta.herokuapp.com/games',
+    $.ajax({url:'https://test-ta.herokuapp.com/games',
     }).done(function (_data){
         console.log(_data);
         dubujarHistorial(_data);
@@ -73,7 +82,7 @@ function dubujarHistorial(_datos){
 function getSingleGame(_idGame)
 {
 	$.ajax({
-		url: 'http://test-ta.herokuapp.com/games/'+_idGame,
+		url: 'https://test-ta.herokuapp.com/games/'+_idGame,
 		type:'GET'
 	}).success(function(_data){
 		console.log(_data);
@@ -88,7 +97,7 @@ function clickComentar(){
 
 function enviarComentario(_idGame, _name , _content){
     $.ajax({
-        url:'http://test-ta.herokuapp.com/games/'+_idGame+'/comments',
+        url:'https://test-ta.herokuapp.com/games/'+_idGame+'/comments',
         type:'POST',
         data:{comment:{name:_name, content:_content, game_id:_idGame}}
     }).done(function (_data){
@@ -101,7 +110,7 @@ function enviarComentario(_idGame, _name , _content){
 function solicitarComentarios(_idGame)
 {
 	$.ajax({
-		url:'http://test-ta.herokuapp.com/games/'+_idGame+'/comments',
+		url:'https://test-ta.herokuapp.com/games/'+_idGame+'/comments',
 		type:'GET'
 	}).done(function(_data){
 		console.log(_data);

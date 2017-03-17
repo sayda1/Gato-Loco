@@ -53,6 +53,7 @@ section{
 #nombres{
     font-size:18px;
     text-align:center;
+    display: none;
 }
 /*-------JUEGO--------TRES----EN----RAYA-------------*/
 #juego{
