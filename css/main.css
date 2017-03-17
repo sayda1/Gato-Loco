@@ -4,22 +4,37 @@
     font-family: cursive;
 }
 body{
+    background-image: url(../img/gato.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
     margin:0;
-    padding:0;
+    padding:0;    
 }
 section{
     position: absolute;
     width:100%;
-    top:50%;
+    top:40%;
     left:0;
     margin:0 auto;
+    color: white;
 }
 #nombres , #juego ,#historial , #comentarios{
     display: none;
 }
 /*------------HTML----PRIMERA-PANTALLA--SALUDO---*/
 .header-menu .navbar{
-    background:white;
+    background:#b23ddd;
+}
+.header-menu .navbar ul li a{
+    color:white;
+}
+/*-------SECTION-INGRESE-SU-NOMBRE--------*/
+#boton1 , #boton2 ,#boton3 , #reiniciar {
+    background:blue;
+    font-size: 20px;
+    border-radius:7px;
+    margin-top: 50px;
+    
 }
 /*-------SECTION-INGRESE-SU-NOMBRE--------*/
 #nombres{
@@ -69,7 +84,6 @@ section{
     position:absolute;
     top:10%;
     font-weight:bold;
-    
 }
 #comentarios .btn{
     color: black;
