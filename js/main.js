@@ -20,12 +20,14 @@ function inicio(){
     $('#nombres').hide(1000);
     $('#juego').hide(1000); 
     $('#historial').hide(1000);
+    $('#comentarios').hide(1000);
     $('#bienvenido').show(1000);
 }
 function naveHistorial(){
     $('#bienvenido').hide(1000);
     $('#nombres').hide(1000);
-    $('#juego').hide(1000); 
+    $('#juego').hide(1000);
+    $('#comentarios').hide(1000);
     $('#historial').show(1000);
     solicitarHistorial(); 
 }
@@ -58,6 +60,8 @@ function naveComentario(){
    //console.log(idGame);
     solicitarComentarios(idGame);
     currentGameID=idGame;
+    $("#ganoJugador").html('Gano'+nombreJugador2);
+    $("#ganoJugador").html('Gano'+nombreJugador1);
 }
 
 ///-----------------------AJAX PETICIONES----- HISTORIAL HTML
@@ -91,7 +95,17 @@ function getSingleGame(_idGame)
 //------------------------PETICIONES--ENVIAR COMENTARIOS
 
 function clickComentar(){
-    enviarComentario(currentGameID, $('#name').val(), $('#comentario').val());
+    
+    if($('#name').val()!=''){
+        enviarComentario(currentGameID, $('#name').val(), $('#comentario').val());
+        $('#mensaje').html('Tu comentario se envió exitosamente.');
+        
+    }else{
+       $('#mensaje').html('Falta ingresar datos.');
+    }
+  $('#name').val('');
+  $('#comentario').val('');
+   
     //console.log('hola..!');
 }
 
@@ -136,7 +150,6 @@ function envioDeJuego(_ganador, _perdedor, _movimientos){
         
     }).done(function(_data){
 		console.log(_data);
-        //dibujarJuego(_data);
 	});
 }
 
@@ -148,8 +161,7 @@ function validarNombres(){
     
     $('#saliNombre1').text(nombre.val());
     $('#saliNombre2').text(nombre2.val());
-    //salinombre1.html(nombre.val());
-    //salinombre2.html(nombre2);
+    
     $("#juga").html( "Empieza " + nombreJugador2);
 }
 var nombreJugador1=$("#nombre").val(); 
@@ -161,12 +173,11 @@ var posicion;
 var gana=false;
 
 var tablero = new Array(9);
+
 $(".celdas").click(dibujarJuego);
-//----------------------- Función para los mensajes y movimientos
+
 function dibujarJuego(evento){
-    //$("#juga").html( "Empieza" + nombreJugador2);
     posicion=evento.target.id-1; 
-    //console.log(posicion);
     if(turno == 1){ 
         if(tablero[posicion] == "X" || tablero[posicion] == "O") { 
         }else{ 
@@ -191,7 +202,7 @@ function dibujarJuego(evento){
     }
 }
 
-//----------------- Función para los mensajes y movimientos
+//---function-movimientos de jugadores
 function defineGanador(){ 
     if ((tablero[0]=="X" && tablero[1]=="X" && tablero[2]=="X") || 
      (tablero[3]=="X" && tablero[4]=="X" && tablero[5]=="X") || 
@@ -203,7 +214,6 @@ function defineGanador(){
      (tablero[2]=="X" && tablero[4]=="X" && tablero[6]=="X")) {
         
         $("#juga").html("Gano<span'>" + nombreJugador2 + "</span>");
-        
         
         $(".ganador").html("<span>" + nombreJugador2+ " le gano a </span>");
         $(".perdedor").html("<span>" + nombreJugador1+ " en </span>");
